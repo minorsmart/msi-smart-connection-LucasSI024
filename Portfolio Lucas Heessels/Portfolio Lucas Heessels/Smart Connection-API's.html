@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>de opdrachten</title>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+  </head>
+
+  <body>
+
+
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html"><h2>Portfolio <em>minor Smart industry </em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Homepage
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li> 
+              <li class="nav-item active">
+                <a class="nav-link" href="products.html">De opdrachten</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Smart Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Over de minor</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>Smart Connection</h4>
+              <h2>API's
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+     
+    <div class="best-features">
+      <div class="container">
+        <a href="Smart Connection.html" class="filled-button">Terug</a>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2></h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="assets/images/API.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>De opdracht</h4>
+              <p>Op deze pagina worden de verschillende API weergegeven die vereist zijn voor de minor. API staat voor Application Programming Interface dit is een soort bemiddelings software die 2 verschillende apps met elkaar laat communiceren.</p>
+             <H4>Weer API</H4>
+              
+              <p>Hier onder is een weer API weergegeven die het weer van Nijmegen aangeeft.</p>
+
+              <div id="weather"></div>
+              <div id="description"></div>
+            <h1 id="temp"></h1>
+          <div id="location"></div>
+          </div>
+          <script lang="text/javascript">
+          // future javascript
+          function weatherBalloon( cityID ) {
+          var key = '2b2251a4d2ce3ba1047749f4936f8fff';
+           fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)
+           .then(function(resp) { return resp.json() }) 
+           .then(function(data) {
+          console.log(data);
+          drawWeather(data);
+           })
+           .catch(function() {});
+          }
+          window.onload = function(){
+              weatherBalloon( 2750052 ); // Toronto
+          }
+          function drawWeather( d ) {
+          var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+          var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32);
+          
+          document.getElementById('description').innerHTML = d.weather[0].description;
+          document.getElementById('temp').innerHTML = celcius + '&deg;';
+          document.getElementById('location').innerHTML = d.name;
+          }
+          </script>
+          <p> </p>
+         <H2> </H2>
+
+<H4>Covid-19 API</H4>
+<p>in de onderstaande API worden de nieuwe/totale besmettingen + de nieuwe/totale doden van Nederland weergegeven</p>
+          
+             
+          
+                  <h4>Covid-19 numbers in the <div id="land"></div> </h4>
+                
+              Datum:
+              <div id="datum"></div>
+              <br>
+              Nieuwe besmettingen:
+              <div id="nieuweBesmettingen"></div>
+              <br>
+              Nieuwe doden
+              <div id="nieuweDoden"></div>
+              <br>
+              Totale besmettingen:
+              <div id="totaleBesmettingen"></div>
+              <br>
+              Totale doden:
+              <div id="totaleDoden"></div>
+          
+              <script lang="text/javascript">
+          
+                  fetch('https://api.covid19api.com/summary')
+          
+                      .then(function (resp) { return resp.json() }) // Convert data to json
+          
+                      .then(function (data) {
+          
+                          console.log(data);
+          
+                          console.log(data.Countries[122].Country);
+          
+                          console.log(data.Countries[122].TotalDeaths);
+          
+                          document.getElementById("land").innerHTML = (data.Countries[122].Country);
+                          document.getElementById("datum").innerHTML = (data.Countries[122].Date);
+                          document.getElementById("nieuweBesmettingen").innerHTML = (data.Countries[122].NewConfirmed);
+                          document.getElementById("nieuweDoden").innerHTML = (data.Countries[122].NewDeaths);
+                          document.getElementById("totaleBesmettingen").innerHTML = (data.Countries[122].TotalConfirmed);
+                          document.getElementById("totaleDoden").innerHTML = (data.Countries[122].TotalDeaths);
+                      })
+          
+                      .catch(function () { // catch any errors
+          
+                  });
+              </script>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <p>Copyright &copy; 2021 Hogeschool Arnhem & Nijmegen Co., Ltd.
+            
+            - Design: Lucas Heessels</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <script src="assets/js/accordions.js"></script>
+
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+
+  </body>
+
+</html>
+
